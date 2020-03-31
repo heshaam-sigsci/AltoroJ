@@ -32,6 +32,7 @@ dependencies {
 		'org.glassfish.jersey.inject:jersey-hk2:2.27',
 		'log4j:log4j:1.2.16',
 		'org.apache.wink:wink-json4j:1.4'
+		'com.github.jsimone:webapp-runner:8.5.11.3'
 	providedCompile \
 		'javax:javaee-api:7.0'
 }
@@ -42,4 +43,16 @@ war {
 	exclude 'WEB-INF/lib/**/*.jar'
 }
 
-task stage(dependsOn: ['build'])
+task stage() {
+    dependsOn clean, war
+}
+war.mustRunAfter clean
+
+task copyToLib(type: Copy) {
+    into "$buildDir/server"
+    from(configurations.compile) {
+        include "webapp-runner*"
+    }
+}
+
+stage.dependsOn(copyToLib)

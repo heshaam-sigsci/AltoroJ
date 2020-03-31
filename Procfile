@@ -1,1 +1,1 @@
-web: java -jar build/libs/altoromutual.war
+web: java -jar build/server/webapp-runner-*.jar build/libs/*.war
