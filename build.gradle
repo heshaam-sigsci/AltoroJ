@@ -41,3 +41,5 @@ war {
 	exclude 'WEB-INF/classes/**/*.class'
 	exclude 'WEB-INF/lib/**/*.jar'
 }
+
+task stage(dependsOn: ['installDist'])
