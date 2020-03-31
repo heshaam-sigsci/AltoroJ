@@ -42,4 +42,4 @@ war {
 	exclude 'WEB-INF/lib/**/*.jar'
 }
 
-task stage(dependsOn: ['installDist'])
+task stage(dependsOn: ['assemble'])
