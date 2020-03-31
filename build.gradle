@@ -21,6 +21,7 @@ sourceSets {
 }
 
 dependencies {
+	compile 'com.github.jsimone:webapp-runner:8.5.11.3'
 	compile \
 		fileTree(dir: "${webAppDirName}/WEB-INF/lib", include: '*.jar'),
 		'commons-codec:commons-codec:1.6',
@@ -31,8 +32,7 @@ dependencies {
 		'org.glassfish.jersey.containers:jersey-container-servlet:2.27',
 		'org.glassfish.jersey.inject:jersey-hk2:2.27',
 		'log4j:log4j:1.2.16',
-		'org.apache.wink:wink-json4j:1.4',
-		'com.github.jsimone:webapp-runner:8.5.11.3'
+		'org.apache.wink:wink-json4j:1.4'
 	providedCompile \
 		'javax:javaee-api:7.0'
 }
@@ -43,17 +43,13 @@ war {
 	exclude 'WEB-INF/lib/**/*.jar'
 }
 
-dependencies {
-  compile 'com.github.jsimone:webapp-runner:8.5.11.3'
-}
-
 task stage() {
     dependsOn clean, war
 }
 war.mustRunAfter clean
 
 task copyToLib(type: Copy) {
-    into "$buildDir/server"
+    into "build/server"
     from(configurations.compile) {
         include "webapp-runner*"
     }
