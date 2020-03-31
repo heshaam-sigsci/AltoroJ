@@ -1,1 +1,1 @@
-web: ./build/libs/altoromutual.war
+web: java -jar build/libs/altoromutual.war
