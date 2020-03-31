@@ -31,7 +31,7 @@ dependencies {
 		'org.glassfish.jersey.containers:jersey-container-servlet:2.27',
 		'org.glassfish.jersey.inject:jersey-hk2:2.27',
 		'log4j:log4j:1.2.16',
-		'org.apache.wink:wink-json4j:1.4'
+		'org.apache.wink:wink-json4j:1.4',
 		'com.github.jsimone:webapp-runner:8.5.11.3'
 	providedCompile \
 		'javax:javaee-api:7.0'
@@ -41,6 +41,10 @@ war {
 	archiveName 'altoromutual.war'
 	exclude 'WEB-INF/classes/**/*.class'
 	exclude 'WEB-INF/lib/**/*.jar'
+}
+
+dependencies {
+  compile 'com.github.jsimone:webapp-runner:8.5.11.3'
 }
 
 task stage() {
